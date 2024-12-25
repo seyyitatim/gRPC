@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option csharp_namespace = "grpcServer";
+
+package unary;
+
+// The greeting service definition.
+service Unary {
+  // Sends a greeting
+  rpc SendMessage (UnaryRequest) returns (UnaryReply);
+}
+
+// The request message containing the user's name.
+message UnaryRequest {
+  string name = 1;
+  string message = 2;
+}
+
+// The response message containing the greetings.
+message UnaryReply {
+  string message = 1;
+}

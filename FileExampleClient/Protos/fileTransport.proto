@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option csharp_namespace = "FileExample";
+
+package fileTransport;
+
+import "google/protobuf/empty.proto";
+
+// The greeting service definition.
+service FileTransport {
+  // Sends a greeting
+  rpc FileDownload (FileInfo) returns (stream BytesContent);
+  rpc FileUpload (stream BytesContent) returns (google.protobuf.Empty);
+}
+
+message FileInfo {
+	string FileName = 1;
+	string FileExtension = 2;
+}
+
+message BytesContent{
+	int64 FileSize = 1;
+	bytes Buffer = 2;
+	int32 ReadedByte = 3;
+	FileInfo Info = 4;
+}
+
+

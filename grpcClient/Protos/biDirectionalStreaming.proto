@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option csharp_namespace = "grpcServer";
+
+package biDirectionalStreaming;
+
+// The greeting service definition.
+service BiDirectionalStreaming {
+  // Sends a greeting
+  rpc SendMessage (stream BiDirectionalStreamingRequest) returns (stream BiDirectionalStreamingReply);
+}
+
+// The request message containing the user's name.
+message BiDirectionalStreamingRequest {
+  string message = 1;
+}
+
+// The response message containing the greetings.
+message BiDirectionalStreamingReply {
+  string message = 1;
+}
